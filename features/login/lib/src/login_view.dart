@@ -7,7 +7,7 @@ const _clientId = "1txM4rVziT4kNSUubrbXV5wAQI3IVlqB";
 const _issuer = "dev-ewsocon3.eu.auth0.com";
 const _authorizationEndpoint = "https://$_issuer/authorize";
 const _tokenEndpoint = "https://$_issuer/oauth/token";
-const _redirectUrl = "io.github.pak3nuh.flutter-playground://oauthredirect";
+const _redirectUrl = "io.github.pak3nuh.flutterplayground://oauthredirect";
 const String _discoveryUrl =
     "https://$_issuer/.well-known/openid-configuration";
 
