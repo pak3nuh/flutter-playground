@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:infrastructure/infrastructure.dart';
+import 'package:login/login.dart';
 
 void main() {
   runApp(SetupWidget());
@@ -20,7 +22,7 @@ class _SetupWidgetState extends State<SetupWidget> {
   @override
   Widget build(BuildContext context) {
     var platform = Theme.of(context).platform;
-    return _setupDone ? Application(_getIt): _loading(platform);
+    return _setupDone ? Application(_getIt) : _loading(platform);
   }
 
   Widget _loading(TargetPlatform platform) {
@@ -42,7 +44,6 @@ class _SetupWidgetState extends State<SetupWidget> {
 }
 
 class Application extends StatelessWidget {
-
   GetIt getIt;
 
   Application(this.getIt);
@@ -55,7 +56,8 @@ class Application extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Demo platform: ' + getIt<PlatformInfo>().platform),
+      home:
+          MyHomePage(title: 'Demo platform: ' + getIt<PlatformInfo>().platform),
     );
   }
 }
@@ -87,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Text(
               'You have pushed the button this many times:',
             ),
@@ -102,6 +104,20 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(child: Text("Menu")),
+            ListTile(
+              title: Text("Login"),
+              onTap: () {
+                Navigator.of(context).push(new CupertinoPageRoute(
+                    builder: (context) => new LoginAppWidget()));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
